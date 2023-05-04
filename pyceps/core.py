@@ -46,3 +46,14 @@ def cepsf0(D, sr=22050, fmax = 400, ss = 3, verbose=True, remove_outliers = Fals
         f0 *= outlier_ind
     f0_ind = find_closest_ind(f0, lfrq)    
     return f0, f0_ind
+
+
+def cepsenv(C, sr=22050, lift_th=20):      
+    '''
+    spectral envelope estimation from low quefrency of cepstrum
+    '''     
+    env = C.copy()
+    env = np.concatenate(  (env, env[1:][::-1]), axis=0 )
+    env[lift_th:-lift_th, :] = 0.
+    env = np.apply_along_axis(func1d=lambda x: np.fft.rfft(x).real[:C.shape[0]], axis=0, arr=env)
+    return env
