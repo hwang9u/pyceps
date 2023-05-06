@@ -1,5 +1,5 @@
 # ------------------------------------------ #
-# Python Implementation of C Analysis #
+# Python Implementation of Cepstral Analysis #
 # ------------------------------------------ #
 import numpy as np
 import librosa
