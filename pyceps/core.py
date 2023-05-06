@@ -25,9 +25,9 @@ def cepsf0(D, sr=22050, fmax = 400, ss = 3, verbose=True, remove_outliers = Fals
     f0 estimation from high quefrency of cepstrum
     '''
     n_fft = int((D.shape[0]-1)*2)
-    quef = (np.arange(n_fft)/sr)[1:] # 0 ~ sr/2 
+    quef = (np.arange(n_fft)/sr)[1:]
     
-    qmin_ind = np.where( (1/quef) < fmax)[0][0] -1
+    qmin_ind = np.where( (1/quef) <= fmax)[0][0]
     _, C = rceps(D, sr=sr, qmin_ind=qmin_ind)
     
     if verbose:
