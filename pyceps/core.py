@@ -48,7 +48,7 @@ def cepsf0(D, sr=22050, fmax = 400, ss = 3, verbose=True, remove_outliers = Fals
     return f0, f0_ind
 
 
-def cepsenv(C, sr=22050, lift_th=20):      
+def cepsenv(C, lift_th=20):      
     '''
     spectral envelope estimation from low quefrency of cepstrum
     '''     
